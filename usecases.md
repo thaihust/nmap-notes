@@ -3,6 +3,14 @@
 
 ## Usecase 1. Using Nmap for Compliance Testing (Network Discovery+Version Detection)
 
+Ref: https://github.com/thaihust/nmap-notes/blob/main/books/Nmap-6-Network-exploration-and-security-auditing-Cookbook.pdf
+
+- Chapter 2: Network Exploration
+- Chapter 3: Gathering Additional Host Information
+- Chapter 7: Scanning Large Networks
+
+Ref: https://github.com/thaihust/nmap-notes/blob/main/books/Nmap-in-the-Enterprise.pdf
+
 Testing for compliance can be one of the most important detective security controls you perform in a enterprise infrastructure. The purpose of compliance testing is to measure the critical components of the organization to the policies and controls that govern them. Normally this function falls to either an internal or external audit team. An internal team is generally comprised of employees of the organization and perhaps some long-term contractors, while an external team is often part of a managed services or consulting package. The audit team is responsible for conducting compliance testing against controls they have developed that are specific to meeting regulatory and legal requirements. These requirements vary based on the type of business your organization is in (the vertical market), in addition to where your organization is located or does business. International, state and local laws all come into play. It is the audit team's responsibility to stay on top of the latest requirements and also to ensure that compliance testing is done in both an orderly and timely fashion. Much like designing and maintaining the policies themselves, compliance testing requires persistent and ongoing attention. There are many different types of compliance testing where Nmap could be
 utilized as part of the solution. Some examples:
 
@@ -60,6 +68,14 @@ The most important point to keep in mind when scanning for policy compliance is 
 the particular piece of policy you are checking. As an example, let’s say your organization has a policy mandating the usage of AV (anti-virus) software on all desktops. Depending on the type of anti-virus application that is deployed, you might find that you have an open port on each system running the AV client. By creating a control that describes this port and the fact that it should be present on systems in your Desktop VLANs, you can then utilize Nmap to locate active systems and subsequently query for this specific port. The beauty of Nmap and its various output capabilities is that you can script this entire process and end up with a small report of online systems having this AV port. One thing to keep in mind (and this goes for any discovery process) is that an end-user’s workstation could make it onto the "has AV installed" list and not be running the AV client. This happens when users inadvertently or purposely reassign ports to other networked applications. This author once came across the elite port of 31337 (default port for the Back Orifice Trojan) during a scheduled port scan of a small intranet and then discovered that a programmer was beta-testing a new application and had chosen this port because it was "fun to use infamous ports"! Needless to say, the programmer was asked to change the default port setting of the application.
 
 ## Usecase 2. Using Nmap for Inventory and Asset Management (Network Discovery+Version Detection)
+
+Ref: https://github.com/thaihust/nmap-notes/blob/main/books/Nmap-6-Network-exploration-and-security-auditing-Cookbook.pdf
+
+- Chapter 2: Network Exploration
+- Chapter 3: Gathering Additional Host Information
+- Chapter 7: Scanning Large Networks
+
+Ref: https://github.com/thaihust/nmap-notes/blob/main/books/Nmap-in-the-Enterprise.pdf
 
 There are many commercial applications designed to track assets, manage inventory counts, relay information about installed services, and monitor system uptime. Luckily for non-commercial application owners, this is another area where Nmap’s ease of use pays off with succinct results. In a matter of minutes, an administrator can generate a scan request for a range of IP addresses, an entire subnet, or even re-scan pre-identified systems. The options for identifying services and Operating System (OS) type come in handy when you are trying to identify existing desktops or servers in the infrastructure.
 
@@ -268,6 +284,13 @@ Nmap finished: 6 IP addresses (6 hosts up) scanned in 223.859 seconds
 Now you are probably saying "That definitely was not a quick, easy method" and since our test environment is really just a small, home network, this really is overkill. However, once you start scanning class C and larger networks, it is often very handy to have a separate fi le that contains just live host information. This is true both from an ongoing live hosts comparison perspective and also from the proficiency angle when you start firing up service and OS scans
 
 ## Usecase 3. Using Nmap for Security Auditing (Vulnerability Detection)
+Ref: https://github.com/thaihust/nmap-notes/blob/main/books/Nmap-6-Network-exploration-and-security-auditing-Cookbook.pdf
+
+  - Chapter 4: Auditing Webservers
+  - Chapter 5: Auditing Databases
+  - Chapter 6: Auditing Mail Servers
+
+Ref: https://github.com/thaihust/nmap-notes/blob/main/books/Nmap-in-the-Enterprise.pdf
 
 Security auditing can be defined as creating a set of controls specifi c to the technology or infrastructure being reviewed and then applying those controls, like a filter, to your environment. Any gaps in or outside that fi lter become audit points and could negatively impact the audit’s overall assessment of your security framework.
 
