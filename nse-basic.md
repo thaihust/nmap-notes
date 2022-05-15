@@ -1,4 +1,5 @@
 ## Ref
+
 https://nmap.org/book/nse-tutorial.html
 
 https://nmap.org/book/nse-example-scripts.html
@@ -6,6 +7,7 @@ https://nmap.org/book/nse-example-scripts.html
 ## Usecases
 - Network Discovery
   - Perform whois lookups, perform additional protocol queries, and act as a client for the listening service to collect information such as available network shares.
+ 
 https://materials.rangeforce.com/tutorial/2019/12/24/Network-Discovery-Nmap/
 
 https://www.redhat.com/sysadmin/enumerating-network-nmap
