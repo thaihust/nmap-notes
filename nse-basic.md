@@ -3,23 +3,23 @@ https://nmap.org/book/nse-tutorial.html
 https://nmap.org/book/nse-example-scripts.html
 
 ## Usecases
-* Network Discovery
-- Perform whois lookups, perform additional protocol queries, and act as a client for the listening service to collect information such as available network shares.
+- Network Discovery
+  - Perform whois lookups, perform additional protocol queries, and act as a client for the listening service to collect information such as available network shares.
 https://materials.rangeforce.com/tutorial/2019/12/24/Network-Discovery-Nmap/
 https://www.redhat.com/sysadmin/enumerating-network-nmap
 https://medium.com/purple-team/network-discovery-and-security-auditing-with-nmap-323432e54ee6
 
-* Version Detection
-- Perform complex version probes and attempt service brute-force cracking.
+- Version Detection
+  - Perform complex version probes and attempt service brute-force cracking.
 
-* Vulnerability Detection
-- Execute probes to check for specific vulnerabilities.
+- Vulnerability Detection
+  - Execute probes to check for specific vulnerabilities.
 
-* Malware Detection
-- Execute probes to discover Trojan and worm backdoors.
+- Malware Detection
+  - Execute probes to discover Trojan and worm backdoors.
 
-* Vulnerability Exploitation
-- Execute scripts to exploit a detected vulnerability.
+- Vulnerability Exploitation
+  - Execute scripts to exploit a detected vulnerability.
 
 ## Examples
 1. Troubleshoot network protocol
