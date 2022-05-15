@@ -3,32 +3,22 @@
 
 ## Usecase 1. Using Nmap for Compliance Testing (Network Discovery+Version Detection)
 
-Testing for compliance can be one of the most important detective security controls you perform in a enterprise infrastructure. The purpose of compliance testing is to measure the critical components of the organization to the policies and controls that govern them. Normally this function falls to either an internal or external audit team. An internal team is generally comprised of employees of the organization and perhaps
-some long-term contractors, while an external team is often part of a managed services
-or consulting package. The audit team is responsible for conducting compliance
-testing against controls they have developed that are specifi c to meeting regulatory
-and legal requirements. These requirements vary based on the type of business your
-organization is in (the vertical market), in addition to where your organization is located
-or does business. International, state and local laws all come into play. It is the audit team's 
-responsibility to stay on top of the latest requirements and also to ensure that compliance
-testing is done in both an orderly and timely fashion. Much like designing and maintaining
-the policies themselves, compliance testing requires persistent and ongoing attention.
-There are many different types of compliance testing where Nmap could be
+Testing for compliance can be one of the most important detective security controls you perform in a enterprise infrastructure. The purpose of compliance testing is to measure the critical components of the organization to the policies and controls that govern them. Normally this function falls to either an internal or external audit team. An internal team is generally comprised of employees of the organization and perhaps some long-term contractors, while an external team is often part of a managed services or consulting package. The audit team is responsible for conducting compliance testing against controls they have developed that are specific to meeting regulatory and legal requirements. These requirements vary based on the type of business your organization is in (the vertical market), in addition to where your organization is located or does business. International, state and local laws all come into play. It is the audit team's responsibility to stay on top of the latest requirements and also to ensure that compliance testing is done in both an orderly and timely fashion. Much like designing and maintaining the policies themselves, compliance testing requires persistent and ongoing attention. There are many different types of compliance testing where Nmap could be
 utilized as part of the solution. Some examples:
+
 - Testing for open ports on the interfaces of a firewall.
 - Performing scans across workstation IP address ranges to determine if any unauthorized networking applications are installed.
-- Determining if the correct version of web service is installed in your
-De-Militarized Zone (DMZ).
+- Determining if the correct version of web service is installed in your De-Militarized Zone (DMZ).
 - Locating systems with open file sharing ports.
-- Locating unauthorized File Transfer Protocol (FTP) servers, printers or
-operating systems.
-- Any number of needs specifi c to the controls written around your organization’s
-policies.
+- Locating unauthorized File Transfer Protocol (FTP) servers, printers or operating systems.
+- Any number of needs specifi c to the controls written around your organization's policies.
 
-Let’s take the example of determining what version of web service is running on
-the server located in your DMZ. We’ll pull out our trusty Nmap application and use
+Let’s take the example of determining what version of web service is running on the server located in your DMZ. We’ll pull out our trusty Nmap application and use
 the Version Scan, –sV, setting:
+
+```sh
 nmap –sV host.example.com
+
 Starting Nmap 4.50 (http://insecure.org) at 2007-12-13 19:41 Central
 Standard Time
 Interesting ports on host.example.com (192.168.10.10):
@@ -46,13 +36,11 @@ PORT STATE SERVICE VERSION
 3389/tcp open ms-term-serv?
 49400/tcp open http Compaq Diagnostis httpd (CompaqHTTPServer 4.2)
 Service Info: OS: Windows
+```
 
-In this example, we see that Nmap believes the server to be running Microsoft
-IIS 5.0. You can also see a lot of other port information that isn’t really specific to
-our current question. We’ll discuss how to narrow down our Nmap query in order to
-facilitate the scan. First though let’s telnet to port 80 on the server and see if Nmap
-has given us the correct information.
+In this example, we see that Nmap believes the server to be running Microsoft IIS 5.0. You can also see a lot of other port information that isn’t really specific to our current question. We’ll discuss how to narrow down our Nmap query in order to facilitate the scan. First though let’s telnet to port 80 on the server and see if Nmap has given us the correct information.
 
+```sh
 telnet host.example.com 80
 GET/HTTP/1.0
 HTTP/1.1 200 OK
@@ -63,31 +51,13 @@ X-AspNet-Version: 2.0.50727
 Cache-Control: private
 Content-Type: text/html; charset=utf-8
 Content-Length: 9578
-Keep in mind that it is very easy to mask this information at the server, but if you
-are checking organization owned assets for version compliance, most likely you have
-found an outdated system. Now, if you wanted to narrow down your Nmap scan to
-only check ports 80 and 443 (or any other ports you know your organization might
-be using for web-based applications), it is fairly easy to scan specific ports with the –p
-command.
-The most important point to keep in mind when scanning for policy compliance
-is that you should have an established set of controls that map back to and describe
-the particular piece of policy you are checking. As an example, let’s say your organization
-has a policy mandating the usage of AV (anti-virus) software on all desktops.
-Depending on the type of anti-virus application that is deployed, you might find that
-you have an open port on each system running the AV client. By creating a control
-that describes this port and the fact that it should be present on systems in your
-Desktop VLANs, you can then utilize Nmap to locate active systems and subsequently
-query for this specifi c port. The beauty of Nmap and its various output capabilities is
-that you can script this entire process and end up with a small report of online
-systems having this AV port. One thing to keep in mind (and this goes for any
-discovery process) is that an end-user’s workstation could make it onto the “has AV
-installed” list and not be running the AV client. This happens when users inadvertently
-or purposely reassign ports to other networked applications. This author once came
-across the elite port of 31337 (default port for the Back Orifice Trojan) during a
-scheduled port scan of a small intranet and then discovered that a programmer was
-beta-testing a new application and had chosen this port because it was “fun to use
-infamous ports”! Needless to say, the programmer was asked to change the default
-port setting of the application.
+```
+
+Keep in mind that it is very easy to mask this information at the server, but if you are checking organization owned assets for version compliance, most likely you have found an outdated system. Now, if you wanted to narrow down your Nmap scan to only check ports 80 and 443 (or any other ports you know your organization might
+be using for web-based applications), it is fairly easy to scan specific ports with the -p command.
+
+The most important point to keep in mind when scanning for policy compliance is that you should have an established set of controls that map back to and describe
+the particular piece of policy you are checking. As an example, let’s say your organization has a policy mandating the usage of AV (anti-virus) software on all desktops. Depending on the type of anti-virus application that is deployed, you might find that you have an open port on each system running the AV client. By creating a control that describes this port and the fact that it should be present on systems in your Desktop VLANs, you can then utilize Nmap to locate active systems and subsequently query for this specifi c port. The beauty of Nmap and its various output capabilities is that you can script this entire process and end up with a small report of online systems having this AV port. One thing to keep in mind (and this goes for any discovery process) is that an end-user’s workstation could make it onto the "has AV installed" list and not be running the AV client. This happens when users inadvertently or purposely reassign ports to other networked applications. This author once came across the elite port of 31337 (default port for the Back Orifice Trojan) during a scheduled port scan of a small intranet and then discovered that a programmer was beta-testing a new application and had chosen this port because it was "fun to use infamous ports"! Needless to say, the programmer was asked to change the default port setting of the application.
 
 ## Usecase 2. Using Nmap for Inventory and Asset Management (Network Discovery+Version Detection)
 
