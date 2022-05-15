@@ -22,16 +22,16 @@ https://medium.com/purple-team/network-discovery-and-security-auditing-with-nmap
   - Execute scripts to exploit a detected vulnerability.
 
 ## Examples
-1. Troubleshoot network protocol
-1.1. DHCP
+### 1. Troubleshoot network protocol
+#### 1.1. DHCP
 
 ```sh
 nmap -sU -p 67 --script=dhcp-discover 192.168.1.0/24
 nmap --script broadcast-dhcp-discover
 ```
 
-2. Discover OS info via SMB
-2.1. Determine the operating system, computer name, domain, workgroup, and current time over the SMB protocol (ports 445 or 139)
+### 2. Discover OS info via SMB
+#### 2.1. Determine the operating system, computer name, domain, workgroup, and current time over the SMB protocol (ports 445 or 139)
 - Discover info toàn bộ các host trong 1 mạng:
 
 ```sh
@@ -39,14 +39,14 @@ nmap --script smb-os-discovery.nse -p445 192.168.1.0/24
 nmap --script smb-os-discovery.nse -p139 192.168.1.0/24
 ```
 
-2.2.  Discover all user accounts that exist on a remote system
+#### 2.2.  Discover all user accounts that exist on a remote system
 
 ```sh
 nmap --script smb-enum-users -p445 192.168.192.0/24
 nmap -sU -sS --script smb-enum-users -p U:137,T:139 192.168.192.0/24
 ```
 
-3. Footprinting
+### 3. Footprinting
 - Cho biết ssh auth-method supported
 
 ```sh
