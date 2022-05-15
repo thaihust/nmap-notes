@@ -127,28 +127,37 @@ Host: 10.0.0.7 () Status: Up
 ### Nmap run completed at Thur Dec 13 22:03:29 2007 –- 10 IP addresses
 
 (7 hosts up) scanned in 0.922 seconds
-At this point, we can simply delete the top and bottom status lines and then use a
-combination of cut and tr to cull the IP addresses from our resulting file and create a
-new file of only active IP addresses that can be fed into Nmap for our OS scan. As an
-example for this file, we can use cut to create a list with only our active IP addresses
-in it (see Figure 2.5).
-cut -b7-15 up-systems2 > IPs-only
+```
 
-As our final prep step, we’ll use the tr command to delete the carriage returns and
-prep our IP address list so that it is ready to be fed into our Nmap OS scan:
-tr -d ‘\r’ < IPs-only > Nmap-ready_IPs
-If you take a peek into the Nmap-ready_IPs file, you will see the IP addresses are
-all on one line, each separated by a space. It’s not very easy to manually read, but this
-is the perfect format for Nmap:
+At this point, we can simply delete the top and bottom status lines and then use a combination of cut and tr to cull the IP addresses from our resulting file and create a new file of only active IP addresses that can be fed into Nmap for our OS scan. As an example for this file, we can use cut to create a list with only our active IP addresses in it (see Figure 2.5).
+
+```sh
+cut -b7-15 up-systems2 > IPs-only
+```
+
+As our final prep step, we’ll use the tr command to delete the carriage returns and prep our IP address list so that it is ready to be fed into our Nmap OS scan:
+
+```sh
+tr -d '\r' < IPs-only > Nmap-ready_IPs
+```
+
+If you take a peek into the Nmap-ready_IPs file, you will see the IP addresses are all on one line, each separated by a space. It’s not very easy to manually read, but this is the perfect format for Nmap:
+
+```sh
 10.0.0.1 10.0.0.2 10.0.0.3 10.0.0.4 10.0.0.5 10.0.0.6 10.0.0.7
-As another alternative, this single command line will create a CR delimited list of
-IP addresses that Nmap can use as an input file:
-cat up-systems2 | grep Host | awk ‘{print $2}’ > Nmap-ready_IPs
-Now we are ready for our second Nmap step: Let’s run this Nmap-ready_IPs file
-as an input file to an Nmap –A scan to detect service and OS versions of these live
-hosts. We’ll output the data to a file named OS-Svc-info and then peek into the
-contents of the resulting fi le (edited for length) to get our OS info:
-Nmap –A –iL Nmap-ready_IPs > OS-Svc-info
+```
+
+As another alternative, this single command line will create a CR delimited list of IP addresses that Nmap can use as an input file:
+
+```sh
+cat up-systems2 | grep Host | awk '{print $2}' > Nmap-ready_IPs
+```
+
+Now we are ready for our second Nmap step: Let’s run this Nmap-ready_IPs file as an input file to an Nmap –A scan to detect service and OS versions of these live
+hosts. We’ll output the data to a file named OS-Svc-info and then peek into the contents of the resulting file (edited for length) to get our OS info:
+
+```sh
+nmap –A –iL Nmap-ready_IPs > OS-Svc-info
 Starting Nmap 4.50 (http://insecure.org) at 2007-12-13 23:48 Central
 Standard Time
 Insufficient responses for TCP sequencing (1), OS detection may be less accurate
