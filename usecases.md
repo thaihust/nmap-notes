@@ -1,12 +1,9 @@
 
-### Nmap Enterprise usecases
+# Nmap Enterprise usecases
 
-###### UC1. Using Nmap for Compliance Testing (Network Discovery+Version Detection)
-Testing for compliance can be one of the most important detective security controls
-you perform in a enterprise infrastructure. The purpose of compliance testing is to
-measure the critical components of the organization to the policies and controls that
-govern them. Normally this function falls to either an internal or external audit team.
-An internal team is generally comprised of employees of the organization and perhaps
+## Usecase 1. Using Nmap for Compliance Testing (Network Discovery+Version Detection)
+
+Testing for compliance can be one of the most important detective security controls you perform in a enterprise infrastructure. The purpose of compliance testing is to measure the critical components of the organization to the policies and controls that govern them. Normally this function falls to either an internal or external audit team. An internal team is generally comprised of employees of the organization and perhaps
 some long-term contractors, while an external team is often part of a managed services
 or consulting package. The audit team is responsible for conducting compliance
 testing against controls they have developed that are specifi c to meeting regulatory
@@ -92,7 +89,8 @@ beta-testing a new application and had chosen this port because it was “fun to
 infamous ports”! Needless to say, the programmer was asked to change the default
 port setting of the application.
 
-###### UC2. Using Nmap for Inventory and Asset Management (Network Discovery+Version Detection)
+## Usecase 2. Using Nmap for Inventory and Asset Management (Network Discovery+Version Detection)
+
 There are many commercial applications designed to track assets, manage inventory
 counts, relay information about installed services, and monitor system uptime. Luckily
 for non-commercial application owners, this is another area where Nmap’s ease of use
@@ -152,7 +150,8 @@ be searched and manipulated.
 nmap -sP -oG up-systems2 10.0.0.1-10
 
 This produces a report with output that is very easy to read:
-# Nmap 4.50 scan initiated Thur Dec 13 22:03:28 2007 as: nmap -sP -oG up-systems2 10.0.0.1-10
+### Nmap 4.50 scan initiated Thur Dec 13 22:03:28 2007 as: nmap -sP -oG up-systems2 10.0.0.1-10
+
 Host: 10.0.0.1 () Status: Up
 Host: 10.0.0.2 () Status: Up
 Host: 10.0.0.3 () Status: Up
@@ -160,7 +159,8 @@ Host: 10.0.0.4 () Status: Up
 Host: 10.0.0.5 () Status: Up
 Host: 10.0.0.6 () Status: Up
 Host: 10.0.0.7 () Status: Up
-# Nmap run completed at Thur Dec 13 22:03:29 2007 –- 10 IP addresses
+### Nmap run completed at Thur Dec 13 22:03:29 2007 –- 10 IP addresses
+
 (7 hosts up) scanned in 0.922 seconds
 At this point, we can simply delete the top and bottom status lines and then use a
 combination of cut and tr to cull the IP addresses from our resulting file and create a
@@ -298,7 +298,8 @@ to have a separate fi le that contains just live host information. This is true 
 an ongoing live hosts comparison perspective and also from the proficiency angle
 when you start firing up service and OS scans
 
-###### UC3. Using Nmap for Security Auditing (Vulnerability Detection)
+## Usecase 3. Using Nmap for Security Auditing (Vulnerability Detection)
+
 Security auditing can be defined as creating a set of controls specifi c to the technology
 or infrastructure being reviewed and then applying those controls, like a filter, to your
 environment. Any gaps in or outside that fi lter become audit points and could negatively
@@ -310,7 +311,8 @@ Nmap can assist with such audit needs as:
 - Utilizing the OS detection feature to pin-point outdated or unauthorized systems on your networks.
 - Discovering unauthorized applications and services.
 
-###### UC4. Using Nmap for System Administration
+## Usecase 4. Using Nmap for System Administration
+
 Although it is normally seen as a go-to application for security professionals, its
 wide-range of port scanning, service and OS identifi cation capabilities make it perfect
 for the system administrator. If you decide to make Nmap available to administrators
@@ -318,7 +320,8 @@ outside IT Security, keep in mind that this could increase unwanted scanning act
 in your network. This is a perfect lead-in to our next subject–important security
 facets of employing Nmap.
 
-## Securing Nmap
+### Securing Nmap
+
 Nmap is a security tool, but it must also be utilized in your infrastructure with
 security in mind. Any administrative tool running in your environment, security-related
 or otherwise, will require certain policies and procedures to ensure a successful
@@ -326,7 +329,8 @@ deployment and operation. When you start specifi cally addressing security-relat
 tools, you have to be sure to incorporate everything from separation of duties to
 principle of least privilege, as well as access tracking and usage reporting.
 
-## Executable and End-User Requirements
+### Executable and End-User Requirements
+
 As with almost any security-related application, the first things to think about when
 starting the installation process includes security of the user context for the application
 and what permissions are required to manipulate the executable. Commonly you will
@@ -354,8 +358,10 @@ Access control can also be implemented in the UNIX world via the use of group
 permissions and commands like sudo.
 
 
-###### UC5. Malware Detection
+## Usecase 5. Malware Detection
+
 - Execute probes to discover Trojan and worm backdoors.
 
-###### UC6. Vulnerability Exploitation
+## Usecase 6. Vulnerability Exploitation
+
 - Execute scripts to exploit a detected vulnerability.
